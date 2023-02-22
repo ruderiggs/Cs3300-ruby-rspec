@@ -1,27 +1,107 @@
 # When done, submit this entire file to the autograder.
 
 # Part 1
-
+#returns the sum of an array. if array is empty return 0
 def sum arr
-  # YOUR CODE HERE
+  x = 0
+
+  # loops and adds elements of an array
+  for y in arr do
+    x = x+y
+  end
+
+  # returns sum of array or 0 if empty
+  return x 
 end
 
+#returns the sum of the two largest values in an array, even if the values are the same
+#returns zero if array is empty and returns value of a single element array
 def max_2_sum arr
-  # YOUR CODE HERE
+  count = 0
+  x = arr[0]
+  y = arr[1]
+
+  #loops and assigns largest numbers to x and y
+  for i in arr do
+    if i > x 
+      x = i
+      y = x
+
+    elsif i < x
+
+      if i > y
+        y = i
+      end
+
+    end
+    count = count + 1 #tracks if array is 0 or 1
+
+  end
+
+  #return 0 if empty
+  if count == 0
+    return 0
+
+  #return value of element if array has only 1 element
+  elsif count == 1
+    return x
+
+  #returns sum of 2 highest values
+  else
+    return x+y
+  end
 end
 
+# returns true 2 elements add up to n
 def sum_to_n? arr, n
-  # YOUR CODE HERE
+bool = false
+count = 0
+x=0
+y=0 #x and y are trackers of elements
+
+  #loops through 1st array
+  for i in arr do
+    count = count + 1
+    x=x+1
+    y=0
+    #loops through 2nd array
+    for j in arr do
+      y=y+1
+
+      #condition if elements add up and are not the same element
+      if i + j == n && x != y
+        bool = true
+      end
+    end
+  end
+
+#returns false if array only has 1 element
+if count == 1
+  bool = false
+end
+
+return bool
 end
 
 # Part 2
 
 def hello(name)
-  # YOUR CODE HERE
+  str = "Hello, #{name}"
+  return str
 end
 
 def starts_with_consonant? s
-  # YOUR CODE HERE
+  vowel = ['a', 'e', 'i', 'o', 'u' , '!', '', '@', '#', '$', '$', '%', '^', '&', '*']
+  char = s.chr
+  bool = true
+  for i in vowel do
+    if char.downcase == i
+      bool = false
+    end
+  end
+
+  return bool
+
 end
 
 def binary_multiple_of_4? s
