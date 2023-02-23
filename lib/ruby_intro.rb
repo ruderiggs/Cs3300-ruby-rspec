@@ -90,18 +90,26 @@ def hello(name)
   return str
 end
 
+#checks if a string begins with a consanant, returns true or false
 def starts_with_consonant? s
-  vowel = ['a', 'e', 'i', 'o', 'u' , '!', '', '@', '#', '$', '$', '%', '^', '&', '*']
-  char = s.chr
+  vowel = ['a' ,'e', 'i', 'o', 'u']
   bool = true
-  for i in vowel do
-    if char.downcase == i
-      bool = false
-    end
+
+  #if string is empty return false
+  if s.empty?
+    bool = false
+  
+  #if string starts with non-letters return false
+  elsif s.downcase.ord < 97 || s.downcase.ord > 122
+    bool = false
+
+  #if string starts with a vowel return false
+  elsif vowel.include?(s.chr.downcase)
+    bool = false
+
   end
-
+  
   return bool
-
 end
 
 def binary_multiple_of_4? s
@@ -110,6 +118,43 @@ end
 
 # Part 3
 
+#class defining if book is in stock
 class BookInStock
-# YOUR CODE HERE
+
+  #constructor
+  def initialize(isbn, price)
+    #throws errors if isbn is empty or price is zero
+    raise ArgumentError.new() if isbn.length <= 0
+    raise ArgumentError.new() if price <= 0
+
+    #instance variables for BookInStock
+    @isbn = isbn
+    @price = price
+  end
+
+  #getter for isbn
+  def isbn
+    @isbn 
+  end
+
+  #getter for price
+  def price
+    @price
+  end
+
+  #setter for isbn
+  def isbn=(value)
+    @isbn = value
+  end
+
+  #setter for price
+  def price=(value)
+   @price = value
+  end
+
+  #formats the price as a string
+  def price_as_string
+    "$%.2f" % @price
+  end
+
 end
